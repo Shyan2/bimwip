@@ -1,0 +1,14 @@
+{
+  "name": "bimwip",
+  "version": "1.0.0",
+  "description": "BIM model server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shyan Chien",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
