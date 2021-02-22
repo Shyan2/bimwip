@@ -5,10 +5,9 @@ const config = require('../../config');
 
 let router = express.Router();
 
-const {
-  getPublicTokenTwoLegged,
-  getInternalTokenTwoLegged,
-} = require('./common/oauth');
+const { getPublicTokenTwoLegged } = require('./common/oauth');
+
+// 2-legged authorization routes
 
 // GET /api/forge/oauth/token - generates a public access token for 2-legged-authorization.
 router.get('/token', async (req, res, next) => {
@@ -20,6 +19,7 @@ router.get('/token', async (req, res, next) => {
   }
 });
 
+// 3-legged authorization routes
 router.get('/callback/oauth', async (req, res, next) => {
   const { code } = req.query;
   const oauth = new OAuth(req.session);
