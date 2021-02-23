@@ -18,7 +18,10 @@ app.use(cors());
 
 app.use('/api/forge/oauth', require('./routes/forge/oauth'));
 app.use('/api/forge/oss', require('./routes/forge/oss'));
-// app.use('/api/forge/modelderivative', require('./routes/forge/model-derivate'));
+app.use(
+  '/api/forge/modelderivative',
+  require('./routes/forge/model-derivative')
+);
 
 app.use((err, req, res, next) => {
   console.error(err);
