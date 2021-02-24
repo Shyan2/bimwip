@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-var config = require('../../config');
 
 let router = express.Router();
 
@@ -119,9 +118,9 @@ router.post('/sendToTranslation', async (req, res, next) => {
 // UNDER DEVELOPMENT
 // aim is to be able to track the translation process.
 // will say if it is translated, or in the process
-router.post('/integration/isReadyToShow', jsonParser, function (req, res) {
-  var ossUrn = req.body.urn;
-});
+// router.post('/integration/isReadyToShow', jsonParser, function (req, res) {
+//   var ossUrn = req.body.urn;
+// });
 
 const translateData = (ossUrn) => {
   let postJob = {

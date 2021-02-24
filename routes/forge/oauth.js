@@ -1,16 +1,15 @@
 const express = require('express');
-const axios = require('axios');
 
 const config = require('../../config');
 
 let router = express.Router();
 
-const { getPublicTokenTwoLegged } = require('./common/oauth');
+const { OAuth, getPublicTokenTwoLegged } = require('./common/oauth');
 
 // 2-legged authorization routes
 
 // GET /api/forge/oauth/token - generates a public access token for 2-legged-authorization.
-router.get('/token', async (req, res, next) => {
+router.get('/oauth/token', async (req, res, next) => {
   try {
     const accessToken = await getPublicTokenTwoLegged();
     res.json(accessToken);
@@ -25,9 +24,7 @@ router.get('/callback/oauth', async (req, res, next) => {
   const oauth = new OAuth(req.session);
   try {
     await oauth.setCode(code);
-    // res.redirect('/');
-    res.redirect('http://localhost:3000/bim360');
-    // res.redirect('https://wsp-internal-forge.herokuapp.com/bim360');
+    res.redirect('http://localhost:3000/');
   } catch (err) {
     next(err);
   }
@@ -48,8 +45,7 @@ router.get('/oauth/url', (req, res) => {
 
 router.get('/oauth/signout', (req, res) => {
   req.session = null;
-  res.redirect('http://localhost:3000/bim360');
-  // res.redirect('https://wsp-internal-forge.herokuapp.com/bim360');
+  res.redirect('http://localhost:3000');
 });
 
 module.exports = router;
