@@ -35,9 +35,4 @@ app.use('/api/forge/list-projects', require('./routes/forge/list-projects'));
 
 app.use('/api/forge', require('./routes/forge/user'));
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.statusCode).json(err);
-});
-
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
