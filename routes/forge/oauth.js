@@ -6,8 +6,9 @@ let router = express.Router();
 
 const { OAuth, getPublicTokenTwoLegged } = require('./common/oauth');
 
-// 2-legged authorization routes
+const REDIRECT_URL = 'http://localhost:3000';
 
+// 2-legged authorization routes
 // GET /api/forge/oauth/token - generates a public access token for 2-legged-authorization.
 router.get('/oauth/token', async (req, res, next) => {
   try {
@@ -24,7 +25,11 @@ router.get('/callback/oauth', async (req, res, next) => {
   const oauth = new OAuth(req.session);
   try {
     await oauth.setCode(code);
-    res.redirect('http://localhost:3000/');
+    // res.header(
+    //   'Cache-Control',
+    //   'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
+    // );
+    res.redirect(REDIRECT_URL);
   } catch (err) {
     next(err);
   }
@@ -45,7 +50,7 @@ router.get('/oauth/url', (req, res) => {
 
 router.get('/oauth/signout', (req, res) => {
   req.session = null;
-  res.redirect('http://localhost:3000');
+  res.redirect('back');
 });
 
 module.exports = router;
