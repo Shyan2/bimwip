@@ -27,7 +27,7 @@ router.get('/callback/oauth', async (req, res, next) => {
   const oauth = new OAuth(req.session);
   try {
     await oauth.setCode(code);
-    res.redirect('https://frontwip.herokuapp.com/');
+    res.redirect('back');
   } catch (err) {
     next(err);
   }
