@@ -15,7 +15,7 @@ if (
 }
 
 const app = express();
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: true }));
 
 app.set('trust proxy', 1);
 app.use(
@@ -39,16 +39,16 @@ app.use(
 
 app.use('/api/forge/list-projects', require('./routes/forge/list-projects'));
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header('Access-Control-Allow-Origin', req.headers.origin);
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+//   );
+//   next();
+// });
 
 app.use('/api/forge', require('./routes/forge/user'));
 
