@@ -27,7 +27,7 @@ router.get('/callback/oauth', async (req, res, next) => {
   try {
     await oauth.setCode(code);
 
-    res.redirect('back');
+    res.redirect(REDIRECT_URL);
   } catch (err) {
     next(err);
   }
