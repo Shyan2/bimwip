@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
@@ -50,5 +51,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/api/forge', require('./routes/forge/user'));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
