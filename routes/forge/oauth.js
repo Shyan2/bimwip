@@ -23,11 +23,11 @@ router.get('/oauth/token', async (req, res, next) => {
 // 3-legged authorization routes
 router.get('/callback/oauth', async (req, res, next) => {
   const { code } = req.query;
+  console.log(req);
   const oauth = new OAuth(req.session);
   try {
     await oauth.setCode(code);
-
-    res.redirect(REDIRECT_URL);
+    res.redirect('https://frontwip.herokuapp.com/');
   } catch (err) {
     next(err);
   }

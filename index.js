@@ -19,12 +19,12 @@ app.use(cors({ credentials: true }));
 app.set('trust proxy', 1);
 app.use(
   cookieSession({
-    secure: true, // try
+    secure: true, // 'false' for Heroku
+    sameSite: 'none', // 'none' for Heroku
     name: 'forge_session',
     keys: ['forge_secure_key'],
     resave: false,
     saveUninitialized: false,
-    sameSite: 'none', // this works
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days, same as refresh token
   })
 );
