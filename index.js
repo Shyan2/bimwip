@@ -19,7 +19,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.set('trust proxy', 1);
 app.use(
   cookieSession({
-    secure: false, // try
+    secure: true, // try
     name: 'forge_session',
     keys: ['forge_secure_key'],
     resave: false,
