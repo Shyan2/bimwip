@@ -19,6 +19,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.set('trust proxy', 1);
 app.use(
   cookieSession({
+    secure: false, // try
     name: 'forge_session',
     keys: ['forge_secure_key'],
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days, same as refresh token
