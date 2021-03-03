@@ -24,6 +24,7 @@ app.use(
     keys: ['forge_secure_key'],
     resave: false,
     saveUninitialized: false,
+    sameSite: 'none',
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days, same as refresh token
   })
 );
