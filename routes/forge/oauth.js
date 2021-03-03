@@ -25,10 +25,7 @@ router.get('/callback/oauth', async (req, res, next) => {
   const oauth = new OAuth(req.session);
   try {
     await oauth.setCode(code);
-    // res.header(
-    //   'Cache-Control',
-    //   'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
-    // );
+    console.log(oauth);
     res.redirect(REDIRECT_URL);
   } catch (err) {
     next(err);
@@ -50,7 +47,7 @@ router.get('/oauth/url', (req, res) => {
 
 router.get('/oauth/signout', (req, res) => {
   req.session = null;
-  res.redirect('back');
+  res.redirect(REDIRECT_URL);
 });
 
 module.exports = router;
